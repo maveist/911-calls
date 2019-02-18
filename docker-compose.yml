@@ -3,9 +3,9 @@ version: '2'
 
 services:
   elasticsearch:
-    image: 'elasticsearch'
+    image: 'elasticsearch:6.6.0'
   
 
 
   kibana:
-    image: 'kibana'
+    image: 'kibana:6.6.0'

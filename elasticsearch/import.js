@@ -18,6 +18,9 @@ esClient.indices.create({
           category:{
             type: "text",
             fielddata: true
+          },
+          twp:{
+            type: "keyword"
           }
         }
       }

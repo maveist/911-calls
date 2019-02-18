@@ -73,6 +73,31 @@ GET 911/call/_search?size=0
 }
 ```
 
+### Trouver le top 3 des villes avec le plus d'appels pour overdose
+
+'''
+
+GET 911/call/_search
+{
+  "query": {
+      "common": {
+        "title": {
+          "query": "overdose"
+        }
+      }
+  },
+  "aggs": {
+    "top_city": {
+      "terms": {
+        "field": "twp",
+        "size": 3
+      }
+    }
+  }
+}
+
+'''
+
 ## Kibana
 
 Dans Kibana, créez un dashboard qui permet de visualiser :

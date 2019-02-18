@@ -22,9 +22,8 @@ GET 911/_count
 ### Compter le nombre d'appels autour de Lansdale dans un rayon de 500 mètres
 
 ```
-GET 911/call/_search
+GET 911/call/_search?size=0
 {
-    "size": 0,
     "query": {
         "bool" : {
             "must" : {
@@ -41,6 +40,22 @@ GET 911/call/_search
             }
         }
     }
+}
+```
+
+### Trouver les 3 mois ayant comptabilisés le plus d'appels
+
+```
+GET 911/call/_search?size=0
+{
+  "aggs" : {
+    "calls" : {
+      "date_histogram" : {
+        "field" : "date",
+        "interval" : "month"
+      }
+    }
+  }
 }
 ```
 

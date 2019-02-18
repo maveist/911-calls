@@ -53,6 +53,7 @@ fs.createReadStream('../911.csv')
         category: data.title.split(':')[0],
         title: data.title.split(':')[1],
         timeStamp: data.timeStamp,
+        date: new Date(data.timeStamp),
         twp: data.twp,
         address: data.addr,
         e: data.e 

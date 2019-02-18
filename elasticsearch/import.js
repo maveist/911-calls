@@ -48,6 +48,7 @@ fs.createReadStream('../911.csv')
         zip: data.zip,
         title: data.title,
         timeStamp: data.timeStamp,
+        date: new Date(data.timeStamp),
         twp: data.twp,
         address: data.addr,
         e: data.e 

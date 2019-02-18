@@ -52,10 +52,27 @@ db.calls.find({
 }).count()
 ```
 
+### Nombre d'appels par catégorie
+
+```
+db.calls.aggregate([
+    { 
+      $group: {
+        _id: "$category",
+        count: { $sum: 1 } 
+      }
+    }
+])
+```
+
 ### Trouver les 3 mois ayant comptabilisés le plus d'appels
 
 ```
+```
 
+### Top 3 des villes avec le plus d'appels pour overdose
+
+```
 ```
 
 Vous allez sûrement avoir besoin de vous inspirer des points suivants de la documentation :

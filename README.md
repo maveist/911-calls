@@ -6,6 +6,12 @@
 
 <span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">911-calls</span> par <a xmlns:cc="http://creativecommons.org/ns#" href="https://github.com/nosql-bootcamp/911-calls" property="cc:attributionName" rel="cc:attributionURL">Chris WOODROW, Sébastien PRUNIER et Benjamin CAVY</a> est distribué sous les termes de la licence <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">Creative Commons - Attribution - NonCommercial - ShareAlike</a>.
 
+## Docker 
+
+'''
+docker-compose up
+'''
+
 ## Pré requis
 
 Nous considérons que vous avez déjà réalisé les workshops suivants :

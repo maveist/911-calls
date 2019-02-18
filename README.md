@@ -8,9 +8,9 @@
 
 ## Docker 
 
-'''
+```
 docker-compose up
-'''
+```
 
 ## Pré requis
 

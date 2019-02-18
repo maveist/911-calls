@@ -31,8 +31,31 @@ Afin de répondre aux différents problèmes, vous allez avoir besoin de créer 
 
 À vous de jouer ! Écrivez les requêtes MongoDB permettant de résoudre les problèmes posés.
 
+### install
 ```
-TODO : ajouter les requêtes MongoDB ici
+db.calls.createIndex( { coordinates : "2dsphere" } )
+```
+
+### Nombre d'appels autour de Landscale dans un rayon de 500 mètres
+
+```
+db.calls.find({ 
+  coordinates :{
+   $near : {
+      $geometry : {   
+         index : "Point" ,
+         coordinates : [-75.283783, 40.241493 ]
+        },
+     $maxDistance : 500
+    }
+  }
+}).count()
+```
+
+### Trouver les 3 mois ayant comptabilisés le plus d'appels
+
+```
+
 ```
 
 Vous allez sûrement avoir besoin de vous inspirer des points suivants de la documentation :

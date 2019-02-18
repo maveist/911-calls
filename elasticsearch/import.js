@@ -4,13 +4,29 @@ var fs = require('fs');
 
 var esClient = new elasticsearch.Client({
   host: 'localhost:9200',
-  log: 'error'
+  log: 'error',
+  requestTimeout: 60000
+});
+
+esClient.indices.create({
+  index: '911',
+  body : {
+    mappings: {
+      call: {
+        properties : {
+          location : { type: 'geo_point' }
+        }
+      }
+    }
+  }
+}, (err, resp) => {
+  if (err) console.trace(err.message);
 });
 
 // Fonction utilitaire permettant de formatter les données pour l'insertion "bulk" dans elastic
 const createBulkInsertQuery = calls => {
   const body = calls.reduce((acc, call) => {
-    acc.push({ index: { _index: '911', _type: 'call', _id: call.timeStamp } })
+    acc.push({ index: { _index: '911', _type: 'call' }})
     acc.push(call)
     return acc
   }, []);
@@ -24,9 +40,9 @@ fs.createReadStream('../911.csv')
     .pipe(csv())
     .on('data', data => {
       calls.push({
-        coords: {
-          latitude: data.lat,
-          longitude: data.lng
+        location: {
+          lat: parseFloat(data.lat),
+          lon: parseFloat(data.lng)
         },
         description: data.desc,
         zip: data.zip,

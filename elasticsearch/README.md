@@ -43,6 +43,20 @@ GET 911/call/_search?size=0
 }
 ```
 
+### Compter le nombre d'appels par catégorie
+
+'''
+GET 911/call/_search
+{
+  "aggs" : {
+        "categories" : {
+            "terms" : { "field" : "category" }
+        }
+    }
+
+}
+'''
+
 ### Trouver les 3 mois ayant comptabilisés le plus d'appels
 
 ```

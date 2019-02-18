@@ -14,7 +14,11 @@ esClient.indices.create({
     mappings: {
       call: {
         properties : {
-          location : { type: 'geo_point' }
+          location : { type: 'geo_point' },
+          category:{
+            type: "text",
+            fielddata: true
+          }
         }
       }
     }
@@ -46,7 +50,8 @@ fs.createReadStream('../911.csv')
         },
         description: data.desc,
         zip: data.zip,
-        title: data.title,
+        category: data.title.split(':')[0],
+        title: data.title.split(':')[1],
         timeStamp: data.timeStamp,
         twp: data.twp,
         address: data.addr,

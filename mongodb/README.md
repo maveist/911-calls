@@ -73,6 +73,34 @@ db.calls.aggregate([
 ### Top 3 des villes avec le plus d'appels pour overdose
 
 ```
+
+db.calls.aggregate([
+        {
+            $match: {
+                "title": 
+                {
+                    $regex:
+                        ".*OVERDOSE.*"  
+                }
+            }
+        },
+        {
+            $group: {
+                _id: "$twp",
+                count: { $sum: 1 }
+            }
+        },
+        {
+            $sort: {
+                 "count": -1
+            }
+        
+        },
+        {
+            $limit : 3
+        }
+    ])
+
 ```
 
 Vous allez sûrement avoir besoin de vous inspirer des points suivants de la documentation :

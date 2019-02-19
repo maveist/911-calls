@@ -68,6 +68,30 @@ db.calls.aggregate([
 ### Trouver les 3 mois ayant comptabilisés le plus d'appels
 
 ```
+db.calls.aggregate([
+        {
+            $group : {
+                _id : {
+                    month: {
+                       $month: "$date" 
+                    },
+                    year: {
+                        $year: "$date"
+                    }
+                },
+                count: { $sum: 1 }
+            }
+        },
+        {
+            $sort: {
+                "count": -1
+            }
+        },
+        {
+            $limit: 3
+        }
+    ])
+
 ```
 
 ### Top 3 des villes avec le plus d'appels pour overdose
